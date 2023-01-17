@@ -1,8 +1,6 @@
 import random
 import time
 
-
-
 def main():
     print("\nWelcome to the game browser!\n")
     time.sleep(1)
