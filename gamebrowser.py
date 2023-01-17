@@ -1,5 +1,6 @@
 import random
 import time
+import math
 
 def main():
     print("\nWelcome to the game browser!\n")
