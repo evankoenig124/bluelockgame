@@ -1,1 +1,17 @@
-a
+Player      Shot    Pass    Dribble   Speed
+
+Isagi        86      81       70        71
+Bachira      81      87       93        82
+Chigiri      78      80       82        95
+Kunigami     92      71       74        74
+Nagi         88      73       84        84
+Reo          83      83       83        83
+Niko         73      82       76        71
+Barou        90      64       86        85
+Igaguri      60      60       60        60
+Otoya        82      85       90        85
+Yukimiya     85      84       91        86
+Rin          91      82       89        87
+Gagamaru     83      77       76        73
+Karasu       84      86       86        80
+Shidou       93      67       85        88
