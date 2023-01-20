@@ -26,14 +26,23 @@ class Player:
 
 player1 = random.randint(1,15)
 player2 = random.randint(1,15)
+while player2 == player1:
+    player2 = random.randint(1,15)
 player3 = random.randint(1,15)
+while player3 == player1 or player3 == player2:
+    player3 = random.randint(1,15)
 
-print("\nPlayer One:",playername[player1],"\nStats:\nShooting:",
-playerstats[player1][:2],"Passing:",playerstats[player1][2:4],
-"\nDribble:",playerstats[player1][4:6],"Speed:",playerstats[player1][6:])
-print("\nPlayer Two:",playername[player2],"\nStats:\nShooting:",
-playerstats[player2][:2],"Passing:",playerstats[player2][2:4],
-"\nDribble:",playerstats[player2][4:6],"Speed:",playerstats[player2][6:])
-print("\nPlayer Three:",playername[player3],"\nStats:\nShooting:",
-playerstats[player3][:2],"Passing:",playerstats[player3][2:4],
-"\nDribble:",playerstats[player3][4:6],"Speed:",playerstats[player3][6:])
+player1 = Player(playername[player1],playerstats[player1][:2],
+playerstats[player1][2:4],playerstats[player1][4:6],playerstats[player1][6:])
+print("\nPlayer One:",player1.name,"\nStats:\nShooting:",player1.shot,"  Passing:",
+player1.passing,"\nDribble: ",player1.dribble,"  Speed:  ",player1.speed)
+
+player2 = Player(playername[player2],playerstats[player2][:2],
+playerstats[player2][2:4],playerstats[player2][4:6],playerstats[player2][6:])
+print("\nPlayer Two:",player2.name,"\nStats:\nShooting:",player2.shot,"  Passing:",
+player2.passing,"\nDribble: ",player2.dribble,"  Speed:  ",player2.speed)
+
+player3 = Player(playername[player3],playerstats[player3][:2],
+playerstats[player3][2:4],playerstats[player3][4:6],playerstats[player3][6:])
+print("\nPlayer Three:",player3.name,"\nStats:\nShooting:",player3.shot,"  Passing:",
+player3.passing,"\nDribble: ",player3.dribble,"  Speed:  ",player3.speed)
