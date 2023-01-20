@@ -34,15 +34,45 @@ while player3 == player1 or player3 == player2:
 
 player1 = Player(playername[player1],playerstats[player1][:2],
 playerstats[player1][2:4],playerstats[player1][4:6],playerstats[player1][6:])
-print("\nPlayer One:",player1.name,"\nStats:\nShooting:",player1.shot,"  Passing:",
+print("\nPlayer One:",player1.name,"\n\nShooting:",player1.shot,"  Passing:",
 player1.passing,"\nDribble: ",player1.dribble,"  Speed:  ",player1.speed)
 
 player2 = Player(playername[player2],playerstats[player2][:2],
 playerstats[player2][2:4],playerstats[player2][4:6],playerstats[player2][6:])
-print("\nPlayer Two:",player2.name,"\nStats:\nShooting:",player2.shot,"  Passing:",
+print("\nPlayer Two:",player2.name,"\n\nShooting:",player2.shot,"  Passing:",
 player2.passing,"\nDribble: ",player2.dribble,"  Speed:  ",player2.speed)
 
 player3 = Player(playername[player3],playerstats[player3][:2],
 playerstats[player3][2:4],playerstats[player3][4:6],playerstats[player3][6:])
-print("\nPlayer Three:",player3.name,"\nStats:\nShooting:",player3.shot,"  Passing:",
+print("\nPlayer Three:",player3.name,"\n\nShooting:",player3.shot,"  Passing:",
 player3.passing,"\nDribble: ",player3.dribble,"  Speed:  ",player3.speed)
+
+width = 400
+height = 650
+grass_color = (121,222,131)
+done = False
+
+pygame.init()
+screen = pygame.display.set_mode((width, height))
+screen.fill(grass_color)
+
+while done == False:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            done = True
+        pygame.draw.rect(screen, (255, 255, 255), (150, 0, 100, 25), )
+        pygame.draw.rect(screen, (255, 255, 255), (150, 625, 100, 25), )
+
+        pygame.draw.rect(screen, (255, 255, 255), (0, 25, 400, 600), 2)
+        pygame.draw.rect(screen, (255, 255, 255), (0, 325, 400, 600), 2)
+
+        pygame.draw.rect(screen, (255, 255, 255), (80, 25, 240, 100), 2)
+        pygame.draw.rect(screen, (255, 255, 255), (80, 525, 240, 100), 2)
+
+        
+
+        pygame.draw.rect(screen, (172, 172, 172), (0, 0, 150, 25), )
+        pygame.draw.rect(screen, (172, 172, 172), (250, 0, 150, 25), )
+        pygame.draw.rect(screen, (172, 172, 172), (0, 625, 150, 25), )
+        pygame.draw.rect(screen, (172, 172, 172), (250, 625, 150, 25), )
+        pygame.display.update()
