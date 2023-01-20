@@ -39,10 +39,10 @@ player1.passing,"\nDribble: ",player1.dribble,"  Speed:  ",player1.speed)
 
 player2 = Player(playername[player2],playerstats[player2][:2],
 playerstats[player2][2:4],playerstats[player2][4:6],playerstats[player2][6:])
-print("\nPlayer One:",player2.name,"\nStats:\nShooting:",player2.shot,"  Passing:",
+print("\nPlayer Two:",player2.name,"\nStats:\nShooting:",player2.shot,"  Passing:",
 player2.passing,"\nDribble: ",player2.dribble,"  Speed:  ",player2.speed)
 
 player3 = Player(playername[player3],playerstats[player3][:2],
 playerstats[player3][2:4],playerstats[player3][4:6],playerstats[player3][6:])
-print("\nPlayer One:",player3.name,"\nStats:\nShooting:",player3.shot,"  Passing:",
+print("\nPlayer Three:",player3.name,"\nStats:\nShooting:",player3.shot,"  Passing:",
 player3.passing,"\nDribble: ",player3.dribble,"  Speed:  ",player3.speed)
