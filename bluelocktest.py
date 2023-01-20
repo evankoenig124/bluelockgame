@@ -1,2 +1,5 @@
-grid = [[0]*8 for n in range(12)]
-print(grid)
+import random
+import pygame
+pygame.init()
+
+screen = pygame.display.set_mode([500, 500])
