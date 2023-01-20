@@ -47,32 +47,3 @@ playerstats[player3][2:4],playerstats[player3][4:6],playerstats[player3][6:])
 print("\nPlayer Three:",player3.name,"\n\nShooting:",player3.shot,"  Passing:",
 player3.passing,"\nDribble: ",player3.dribble,"  Speed:  ",player3.speed)
 
-width = 400
-height = 650
-grass_color = (121,222,131)
-done = False
-
-pygame.init()
-screen = pygame.display.set_mode((width, height))
-screen.fill(grass_color)
-
-while done == False:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            done = True
-        pygame.draw.rect(screen, (255, 255, 255), (150, 0, 100, 25), )
-        pygame.draw.rect(screen, (255, 255, 255), (150, 625, 100, 25), )
-
-        pygame.draw.rect(screen, (255, 255, 255), (0, 25, 400, 600), 2)
-        pygame.draw.rect(screen, (255, 255, 255), (0, 325, 400, 600), 2)
-
-        pygame.draw.rect(screen, (255, 255, 255), (80, 25, 240, 100), 2)
-        pygame.draw.rect(screen, (255, 255, 255), (80, 525, 240, 100), 2)
-
-        
-
-        pygame.draw.rect(screen, (172, 172, 172), (0, 0, 150, 25), )
-        pygame.draw.rect(screen, (172, 172, 172), (250, 0, 150, 25), )
-        pygame.draw.rect(screen, (172, 172, 172), (0, 625, 150, 25), )
-        pygame.draw.rect(screen, (172, 172, 172), (250, 625, 150, 25), )
-        pygame.display.update()
