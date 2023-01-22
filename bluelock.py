@@ -11,15 +11,16 @@ def main():
     grass_color = (121,222,131)
     global screen
     screen = pygame.display.set_mode((width, height))
-    screen.fill(grass_color)
+    screen.fill(grass_color, rect=(0,0,400,650))
+    screen.fill((255,255,255), rect=(400,0,400,650))
     pygame.display.set_caption('Blue Lock Game')
     global start_img, quit_img
     start_img = pygame.image.load('start.png').convert_alpha()
     quit_img = pygame.image.load('quit.png').convert_alpha()
     global start_button, quit_button
     #idk how to make the buttons above the drawings
-    start_button = Button(350, 50, start_img)
-    quit_button = Button(350, 150, quit_img)
+    start_button = Button(450, 50, start_img)
+    quit_button = Button(450, 550, quit_img)
     gameLoop(screen)
 
     #Need to use events in main function to prevent input delay
@@ -40,8 +41,7 @@ class Button():
    
 
 def fieldGen(screen):
-    #control panel + control panel outline
-    pygame.draw.rect(screen, (255, 255, 255), (400, 0, 200, 650), )
+    #control panel outline
     pygame.draw.rect(screen, (0, 0, 0), (400, 0, 200, 650), 2)
 
     #goals
