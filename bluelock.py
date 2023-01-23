@@ -6,21 +6,25 @@ import sys
 def main():
     #Sets initial screen values
     pygame.init()
+    pygame.display.set_caption('Blue Lock Game')
+    
     width = 600
     height = 650
     grass_color = (121,222,131)
+
     global screen
     screen = pygame.display.set_mode((width, height))
     screen.fill(grass_color, rect=(0,0,400,650))
     screen.fill((255,255,255), rect=(400,0,400,650))
-    pygame.display.set_caption('Blue Lock Game')
+
     global start_img, quit_img
     start_img = pygame.image.load('start.png').convert_alpha()
     quit_img = pygame.image.load('quit.png').convert_alpha()
+
     global start_button, quit_button
-    #idk how to make the buttons above the drawings
     start_button = Button(450, 50, start_img)
     quit_button = Button(450, 550, quit_img)
+
     gameLoop(screen)
 
     #Need to use events in main function to prevent input delay
@@ -90,10 +94,15 @@ def gameLoop(screen):
 
     done = False
     while done == False:
+        #Checks if the return of start_button.draw() == True
+        if start_button.draw():
+            #replace pass with a function call that starts the game
+            pass
+        #Checks if the return of quit_button.draw() == True
+        if quit_button.draw():
+            done = True
         for event in pygame.event.get():
             fieldGen(screen)
-            start_button.draw()
-            quit_button.draw()
             if event.type == pygame.QUIT:
                 done = True
     
