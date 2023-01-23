@@ -33,12 +33,27 @@ class Button():
         self.image = image
         self.rect = self.image.get_rect()
         self.rect.topleft = (x, y)
+        self.clicked = False
     
     def draw(self):
+        action = False
         #draws the button on screen
         screen.blit(self.image, (self.rect.x, self.rect.y))
+        #get mouse position
+        pos = pygame.mouse.get_pos()
+        #checks if mouse is on button
+        if self.rect.collidepoint(pos):
+            #checks if leftclick is pressed, allows it to be clicked only once
+            if pygame.mouse.get_pressed()[0] == 1 and self.clicked == False:
+                self.clicked = True
+                action = True
+        #allows button to be clicked again later
+        if pygame.mouse.get_pressed()[0] == 0:
+            self.clicked = False
 
-   
+        return action
+        
+
 
 def fieldGen(screen):
     #control panel outline
