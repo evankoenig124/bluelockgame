@@ -13,8 +13,10 @@ def main():
     height = 650
     grass_color = (121,222,131)
 
-    global font
+    global font, font2
     font = pygame.font.SysFont("tahoma", 20)
+    font2 = pygame.font.SysFont("tahoma", 20, True)
+
 
     global screen
     screen = pygame.display.set_mode((width, height))
@@ -136,7 +138,7 @@ def gameLoop(screen):
         if start_button.draw():
             #replace pass with a function call that starts the game
             player1 = playerGen(0,0)
-            text = font.render('Player 1:', True, (0, 0, 0))
+            text = font2.render('Player 1:', True, (0, 0, 0))
             text_rect = text.get_rect(center=(width/1.138, 120))
             screen.blit(text, text_rect)
             text = font.render(player1.name, True, (0, 0, 0))
@@ -155,7 +157,7 @@ def gameLoop(screen):
             text_rect = text.get_rect(center=(width/1.138, 225))
             screen.blit(text, text_rect)
             player2 = playerGen(player1.usednum,0)
-            text = font.render('Player 2:', True, (0, 0, 0))
+            text = font2.render('Player 2:', True, (0, 0, 0))
             text_rect = text.get_rect(center=(width/1.138, 270))
             screen.blit(text, text_rect)
             text = font.render(player2.name, True, (0, 0, 0))
@@ -174,7 +176,7 @@ def gameLoop(screen):
             text_rect = text.get_rect(center=(width/1.138, 375))
             screen.blit(text, text_rect)
             player3 = playerGen(player1.usednum,player2.usednum)
-            text = font.render('Player 3:', True, (0, 0, 0))
+            text = font2.render('Player 3:', True, (0, 0, 0))
             text_rect = text.get_rect(center=(width/1.138, 420))
             screen.blit(text, text_rect)
             text = font.render(player3.name, True, (0, 0, 0))
