@@ -7,13 +7,14 @@ def main():
     #Sets initial screen values
     pygame.init()
     pygame.display.set_caption('Blue Lock Game')
-    
-    width = 600
+
+    global width,height
+    width = 800
     height = 650
     grass_color = (121,222,131)
 
     global font
-    font = pygame.font.SysFont("tahoma", 10)
+    font = pygame.font.SysFont("tahoma", 20)
 
     global screen
     screen = pygame.display.set_mode((width, height))
@@ -25,8 +26,8 @@ def main():
     quit_img = pygame.image.load('quit.png').convert_alpha()
 
     global start_button, quit_button
-    start_button = Button(450, 50, start_img)
-    quit_button = Button(450, 550, quit_img)
+    start_button = Button(650, 50, start_img)
+    quit_button = Button(650, 550, quit_img)
 
     gameLoop(screen)
 
@@ -64,7 +65,7 @@ class Button():
 
 def fieldGen(screen):
     #control panel outline
-    pygame.draw.rect(screen, (0, 0, 0), (400, 0, 200, 650), 2)
+    pygame.draw.rect(screen, (0, 0, 0), (400, 0, 400, 650), 2)
 
     #goals
     pygame.draw.rect(screen, (255, 255, 255), (150, 0, 100, 25), )
@@ -92,7 +93,7 @@ def fieldGen(screen):
 
     pygame.display.update()
 
-def playerGen():
+def playerGen(previousnum1,previousnum2):
 
     playerstats = {1:'86817071',2:'81879382',
     3:'78808295',4:'92717474',5:'88738484',
@@ -109,35 +110,21 @@ def playerGen():
     15:'Shidou'}
 
     class Player:
-        def __init__(self, name, shot, passing, dribble, speed):
+        def __init__(self, name, shot, passing, dribble, speed, usednum):
             self.name = name
             self.shot = shot
             self.passing = passing
             self.dribble = dribble
             self.speed = speed
+            self.usednum = usednum
 
     player1 = random.randint(1,15)
-    player2 = random.randint(1,15)
-    while player2 == player1:
-        player2 = random.randint(1,15)
-    player3 = random.randint(1,15)
-    while player3 == player1 or player3 == player2:
-        player3 = random.randint(1,15)
+    while player1 == previousnum1 or player1 == previousnum2:
+        player1 = random.randint(1,15)
 
-    player1 = Player(playername[player1],playerstats[player1][:2],
-    playerstats[player1][2:4],playerstats[player1][4:6],playerstats[player1][6:])
-    print("\nPlayer One:",player1.name,"\n\nShooting:",player1.shot,"  Passing:",
-    player1.passing,"\nDribble: ",player1.dribble,"  Speed:  ",player1.speed)
-
-    player2 = Player(playername[player2],playerstats[player2][:2],
-    playerstats[player2][2:4],playerstats[player2][4:6],playerstats[player2][6:])
-    print("\nPlayer Two:",player2.name,"\n\nShooting:",player2.shot,"  Passing:",
-    player2.passing,"\nDribble: ",player2.dribble,"  Speed:  ",player2.speed)
-
-    player3 = Player(playername[player3],playerstats[player3][:2],
-    playerstats[player3][2:4],playerstats[player3][4:6],playerstats[player3][6:])
-    print("\nPlayer Three:",player3.name,"\n\nShooting:",player3.shot,"  Passing:",
-    player3.passing,"\nDribble: ",player3.dribble,"  Speed:  ",player3.speed)
+    newplayer = Player(playername[player1],playerstats[player1][:2],
+    playerstats[player1][2:4],playerstats[player1][4:6],playerstats[player1][6:],player1)
+    return newplayer
 
 
 
@@ -148,8 +135,63 @@ def gameLoop(screen):
         #Checks if the return of start_button.draw() == True
         if start_button.draw():
             #replace pass with a function call that starts the game
-            text = font.render('Bachira is da goat NC', True, (0, 0, 0))
-            screen.blit(text, (425, 25))
+            player1 = playerGen(0,0)
+            text = font.render('Player 1:', True, (0, 0, 0))
+            text_rect = text.get_rect(center=(width/1.138, 120))
+            screen.blit(text, text_rect)
+            text = font.render(player1.name, True, (0, 0, 0))
+            text_rect = text.get_rect(center=(width/1.138, 145))
+            screen.blit(text, text_rect)
+            text = font.render("Shot: " + player1.shot, True, (0, 0, 0))
+            text_rect = text.get_rect(center=(width/1.138, 165))
+            screen.blit(text, text_rect)
+            text = font.render("Pass: " + player1.passing, True, (0, 0, 0))
+            text_rect = text.get_rect(center=(width/1.138, 185))
+            screen.blit(text, text_rect)
+            text = font.render("Dribble: " + player1.dribble, True, (0, 0, 0))
+            text_rect = text.get_rect(center=(width/1.138, 205))
+            screen.blit(text, text_rect)
+            text = font.render("Speed: " + player1.speed, True, (0, 0, 0))
+            text_rect = text.get_rect(center=(width/1.138, 225))
+            screen.blit(text, text_rect)
+            player2 = playerGen(player1.usednum,0)
+            text = font.render('Player 2:', True, (0, 0, 0))
+            text_rect = text.get_rect(center=(width/1.138, 270))
+            screen.blit(text, text_rect)
+            text = font.render(player2.name, True, (0, 0, 0))
+            text_rect = text.get_rect(center=(width/1.138, 295))
+            screen.blit(text, text_rect)
+            text = font.render("Shot: " + player2.shot, True, (0, 0, 0))
+            text_rect = text.get_rect(center=(width/1.138, 315))
+            screen.blit(text, text_rect)
+            text = font.render("Pass: " + player2.passing, True, (0, 0, 0))
+            text_rect = text.get_rect(center=(width/1.138, 335))
+            screen.blit(text, text_rect)
+            text = font.render("Dribble: " + player2.dribble, True, (0, 0, 0))
+            text_rect = text.get_rect(center=(width/1.138, 355))
+            screen.blit(text, text_rect)
+            text = font.render("Speed: " + player2.speed, True, (0, 0, 0))
+            text_rect = text.get_rect(center=(width/1.138, 375))
+            screen.blit(text, text_rect)
+            player3 = playerGen(player1.usednum,player2.usednum)
+            text = font.render('Player 3:', True, (0, 0, 0))
+            text_rect = text.get_rect(center=(width/1.138, 420))
+            screen.blit(text, text_rect)
+            text = font.render(player3.name, True, (0, 0, 0))
+            text_rect = text.get_rect(center=(width/1.138, 445))
+            screen.blit(text, text_rect)
+            text = font.render("Shot: " + player3.shot, True, (0, 0, 0))
+            text_rect = text.get_rect(center=(width/1.138, 465))
+            screen.blit(text, text_rect)
+            text = font.render("Pass: " + player3.passing, True, (0, 0, 0))
+            text_rect = text.get_rect(center=(width/1.138, 485))
+            screen.blit(text, text_rect)
+            text = font.render("Dribble: " + player3.dribble, True, (0, 0, 0))
+            text_rect = text.get_rect(center=(width/1.138, 505))
+            screen.blit(text, text_rect)
+            text = font.render("Speed: " + player3.speed, True, (0, 0, 0))
+            text_rect = text.get_rect(center=(width/1.138, 525))
+            screen.blit(text, text_rect)
             pygame.display.update
         #Checks if the return of quit_button.draw() == True
         if quit_button.draw():
