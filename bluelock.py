@@ -13,7 +13,7 @@ def main():
     grass_color = (121,222,131)
 
     global font
-    font=pygame.font.Font(None,20)
+    font = pygame.font.SysFont("tahoma", 10)
 
     global screen
     screen = pygame.display.set_mode((width, height))
@@ -148,10 +148,9 @@ def gameLoop(screen):
         #Checks if the return of start_button.draw() == True
         if start_button.draw():
             #replace pass with a function call that starts the game
-            text = font.render('Test', True, (0, 0, 0))
-            textRect = text.get_rect()
-            textRect.center = (500,500)
-            pass
+            text = font.render('Bachira is da goat NC', True, (0, 0, 0))
+            screen.blit(text, (425, 25))
+            pygame.display.update
         #Checks if the return of quit_button.draw() == True
         if quit_button.draw():
             done = True

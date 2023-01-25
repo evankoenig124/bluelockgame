@@ -1,4 +1,4 @@
-import random
+'''import random
 import pygame
 pygame.init()
 
@@ -45,5 +45,7 @@ player2.passing,"\nDribble: ",player2.dribble,"  Speed:  ",player2.speed)
 player3 = Player(playername[player3],playerstats[player3][:2],
 playerstats[player3][2:4],playerstats[player3][4:6],playerstats[player3][6:])
 print("\nPlayer Three:",player3.name,"\n\nShooting:",player3.shot,"  Passing:",
-player3.passing,"\nDribble: ",player3.dribble,"  Speed:  ",player3.speed)
+player3.passing,"\nDribble: ",player3.dribble,"  Speed:  ",player3.speed)'''
 
+import pygame
+print(pygame.font.get_fonts())
