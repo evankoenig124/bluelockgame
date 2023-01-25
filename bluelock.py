@@ -133,9 +133,10 @@ def playerGen(previousnum1,previousnum2):
 def gameLoop(screen):
 
     done = False
+    players = False
     while done == False:
         #Checks if the return of start_button.draw() == True
-        if start_button.draw():
+        if start_button.draw() and players == False:
             #replace pass with a function call that starts the game
             player1 = playerGen(0,0)
             text = font2.render('Player 1:', True, (0, 0, 0))
@@ -194,6 +195,7 @@ def gameLoop(screen):
             text = font.render("Speed: " + player3.speed, True, (0, 0, 0))
             text_rect = text.get_rect(center=(width/1.138, 525))
             screen.blit(text, text_rect)
+            players = True
             pygame.display.update
         #Checks if the return of quit_button.draw() == True
         if quit_button.draw():
