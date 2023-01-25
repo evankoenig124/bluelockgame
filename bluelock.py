@@ -1,6 +1,4 @@
-import random
-import pygame
-import sys
+import random, pygame, sys, time
 
 
 def main():
@@ -79,6 +77,14 @@ def fieldGen(screen):
     #goal boxes
     pygame.draw.rect(screen, (255, 255, 255), (80, 25, 240, 100), 2)
     pygame.draw.rect(screen, (255, 255, 255), (80, 525, 240, 100), 2)
+    pygame.draw.rect(screen, (255, 255, 255), (140, 25, 120, 50), 2)
+    pygame.draw.rect(screen, (255, 255, 255), (140, 575, 120, 50), 2)
+    pygame.draw.circle(screen, (255, 255, 255), (200, 101), 3, 10)
+    pygame.draw.circle(screen, (255, 255, 255), (200, 551), 3, 10)
+
+    #center circle
+    pygame.draw.circle(screen, (255, 255, 255), (200, 325), 70, 2)
+    pygame.draw.circle(screen, (255, 255, 255), (200, 326), 3, 10)
 
     #halfway line
     pygame.draw.rect(screen, (255, 255, 255), (0, 325, 400, 600), 2)
@@ -102,14 +108,20 @@ def playerGen(previousnum1,previousnum2):
     6:'83838383',7:'73827671',8:'90648685',
     9:'60606060',10:'82859085',11:'85849186',
     12:'91828987',13:'83777673',14:'84868680',
-    15:'93678588'}
+    15:'93678588',16:'84758287',17:'77697275',
+    18:'75908080',19:'76878283',20:'83768294',
+    21:'92959686',22:'72747580',23:'96818688',
+    24:'79928480',25:'84867882',26:'81837678'}
 
     playername = {1:'Isagi',2:'Bachira',
     3:'Chigiri',4:'Kunigami',5:'Nagi',
     6:'Reo',7:'Niko',8:'Barou',
     9:'Igaguri',10:'Otoya',11:'Yukimiya',
     12:'Rin',13:'Gagamaru',14:'Karasu',
-    15:'Shidou'}
+    15:'Shidou',16:'Tokimitsu',17:'Raichi',
+    18:'Hiori',19:'Kurona',20:'Zantetsu',
+    21:'Sae',22:'Naruhaya',23:'Kaiser',
+    24:'Ness',25:'Agi',26:'Aryu'}
 
     class Player:
         def __init__(self, name, shot, passing, dribble, speed, usednum):
@@ -120,9 +132,9 @@ def playerGen(previousnum1,previousnum2):
             self.speed = speed
             self.usednum = usednum
 
-    player1 = random.randint(1,15)
+    player1 = random.randint(1,26)
     while player1 == previousnum1 or player1 == previousnum2:
-        player1 = random.randint(1,15)
+        player1 = random.randint(1,26)
 
     newplayer = Player(playername[player1],playerstats[player1][:2],
     playerstats[player1][2:4],playerstats[player1][4:6],playerstats[player1][6:],player1)
@@ -137,7 +149,7 @@ def gameLoop(screen):
     while done == False:
         #Checks if the return of start_button.draw() == True
         if start_button.draw() and players == False:
-            #replace pass with a function call that starts the game
+            #Displays the player and stats
             player1 = playerGen(0,0)
             text = font2.render('Player 1:', True, (0, 0, 0))
             text_rect = text.get_rect(center=(width/1.138, 120))
@@ -157,6 +169,8 @@ def gameLoop(screen):
             text = font.render("Speed: " + player1.speed, True, (0, 0, 0))
             text_rect = text.get_rect(center=(width/1.138, 225))
             screen.blit(text, text_rect)
+            pygame.display.update
+            fieldGen(screen)
             player2 = playerGen(player1.usednum,0)
             text = font2.render('Player 2:', True, (0, 0, 0))
             text_rect = text.get_rect(center=(width/1.138, 270))
@@ -176,6 +190,9 @@ def gameLoop(screen):
             text = font.render("Speed: " + player2.speed, True, (0, 0, 0))
             text_rect = text.get_rect(center=(width/1.138, 375))
             screen.blit(text, text_rect)
+            time.sleep(1)
+            pygame.display.update
+            fieldGen(screen)
             player3 = playerGen(player1.usednum,player2.usednum)
             text = font2.render('Player 3:', True, (0, 0, 0))
             text_rect = text.get_rect(center=(width/1.138, 420))
@@ -196,6 +213,8 @@ def gameLoop(screen):
             text_rect = text.get_rect(center=(width/1.138, 525))
             screen.blit(text, text_rect)
             players = True
+            time.sleep(1)
+            fieldGen(screen)
             pygame.display.update
         #Checks if the return of quit_button.draw() == True
         if quit_button.draw():
